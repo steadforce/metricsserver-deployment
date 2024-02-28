@@ -1,0 +1,10 @@
+metrics-server:
+  # this deployment is only made for local KinD clusters
+  args:
+  - --kubelet-insecure-tls
+  podLabels:
+    # kubelet communication with metrics-server doesn't
+    # like istio sidecars and it's already secured with tls
+    sidecar.istio.io/inject: "false"
+  resources:
+    requests: ~
